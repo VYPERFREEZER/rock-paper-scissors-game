@@ -70,12 +70,18 @@ class Game:
         
     def start_game(self):
         accept = self.intro()
+        while accept != "y" and accept != "n":
+            print("**" * 20)
+            print("Invalid input")
+            print("**" * 20)
+            accept = self.intro()
+
         if accept == "y":
             while True:
                 computer_choice = self.get_computer_choice()
                 player_choice = self.get_player_choice()
                 self.check_winner(player_choice, computer_choice)
-        else:
+        elif accept == "n" or "q":
             self.quit_game()
 
 game = Game()
